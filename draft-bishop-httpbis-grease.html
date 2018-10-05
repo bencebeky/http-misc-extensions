@@ -1,0 +1,489 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" 
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head profile="http://www.w3.org/2006/03/hcard http://dublincore.org/documents/2008/08/04/dc-html/">
+  <meta http-equiv="Content-Type" content="text/html; charset=us-ascii" />
+
+  <title>GREASE for HTTP/2</title>
+
+  
+<style type="text/css">/*<![CDATA[*/
+
+body {
+  font: 16px "Helvetica Neue","Open Sans",Helvetica,Calibri,sans-serif;
+  color: #333;
+  font-size-adjust: 0.5;
+  line-height: 24px;
+  margin: 75px auto;
+  max-width: 624px;
+  padding: 0 5px;
+}
+
+.title, .filename, h1, h2, h3, h4, h5 {
+  font: 16px "Roboto Condensed","Helvetica Neue","Open Sans",Helvetica,Calibri,sans-serif;
+  font-size-adjust: 0.5;
+  font-weight: bold;
+  color: #333;
+  line-height: 100%;
+  margin: 1.2em 0 0.3em;
+}
+.title, #rfc\.title h1 { font-size: 32px; }
+h1, section h1, h2, section h2, section h3, nav h2 { font-size: 20px; }
+h3, section h4, h4, section h5 { font-size: 16px; }
+h1 a[href], h2 a[href], h3 a[href], h4 a[href] {
+  color: #333;
+}
+
+table {
+  margin-left: 0em;
+  border-collapse: collapse;
+}
+th {
+  text-align: left;
+  border-bottom: 2px solid #ddd;
+}
+td {
+  border-top: 1px solid #ddd;
+  vertical-align: top;
+}
+tr:nth-child(2n+1) > td,
+tr:nth-child(2n+1) > th {
+  background-color: #f9f9f9;
+}
+td.reference {
+  max-width: 200px;
+  border-top: none;
+  padding-right: 1em;
+}
+.right {
+  text-align: right;
+}
+
+
+table.header, table#rfc\.headerblock {
+  width: 100%;
+}
+table.header td, table#rfc\.headerblock td {
+  border: none;
+  background-color: transparent;
+  color: black;
+  padding: 0;
+}
+.filename {
+  display: block;
+  color: rgb(119, 119, 119);
+  font-size: 20px;
+  font-weight: normal;
+  line-height: 100%;
+  margin: 10px 0 32px;
+}
+#rfc\.abstract+p, #rfc\.abstract p {
+  font-size: 20px;
+  line-height: 28px;
+}
+
+samp, tt, code, pre {
+  font: 15px Consolas, monospace;
+  font-size-adjust: none;
+}
+pre {
+  background-color: #eee;
+  border: 1px solid #ddd;
+  overflow-x: auto;
+  padding: 5px;
+  margin: 5px;
+}
+.figure, caption {
+  font-style: italic;
+  margin: 0 1.5em;
+  text-align: left;
+}
+
+address {
+  margin: 16px 2px;
+  line-height: 20px;
+}
+.vcard {
+  font-style: normal;
+}
+.vcardline {
+  display: block;
+}
+.vcardline .fn, address b {
+  font-weight: normal;
+}
+.vcardline .hidden {
+  display: none;
+}
+
+dl {
+  margin-left: 1em;
+}
+dl.dl-horizontal: {
+  margin-left: 0;
+}
+dl > dt {
+  float: left;
+  margin-right: 1em;
+}
+dl.nohang > dt {
+  float: none;
+}
+dl > dd {
+  margin-bottom: .5em;
+}
+dl.compact > dd {
+  margin-bottom: 0em;
+}
+dl > dd > dl {
+  margin-top: 0.5em;
+  margin-bottom: 0em;
+}
+ul.empty {
+  list-style-type: none;
+}
+ul.empty li {
+  margin-top: .5em;
+}
+
+hr {
+  border: 0;
+  border-top: 1px solid #eee;
+}
+hr.noprint {
+  display: none;
+}
+
+a {
+  text-decoration: none;
+}
+a[href] {
+  color: #2a6496;
+}
+a[href]:hover {
+  background-color: #eee;
+}
+
+p, ol, ul, li {
+  padding: 0;
+}
+p {
+  margin: 0.5em 0;
+}
+ol, ul {
+  margin: 0.2em 0 0.2em 2em;
+}
+li {
+  margin: 0.2em 0;
+}
+address {
+  font-style: normal;
+}
+
+ul.toc ul {
+  margin: 0 0 0 2em;
+}
+ul.toc li {
+  list-style: none;
+  margin: 0;
+}
+
+@media screen and (min-width: 924px) {
+  body {
+    padding-right: 350px;
+  }
+  body>ul.toc, body>#rfc\.toc {
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    right: calc(50vw - 500px);
+    width: 300px;
+    z-index: 1;
+    overflow: auto;
+    overscroll-behavior: contain;
+  }
+  body>#rfc\.toc {
+    top: 55px;
+  }
+  body>ul.toc {
+    top: 100px;
+  }
+
+  ul.toc {
+    margin: 0 0 0 4px;
+    font-size: 12px;
+    line-height: 20px;
+  }
+  ul.toc ul {
+    margin-left: 1.2em;
+  }
+}
+
+.github-fork-ribbon-wrapper {
+  display: none;
+}
+@media screen and (min-width: 800px) {
+  /* "Fork me on GitHub" CSS ribbon based on
+   * https://github.com/simonwhitaker/github-fork-ribbon-css
+   */
+  .github-fork-ribbon {
+    position: absolute;
+    padding: 2px 0;
+    background-color: #a00;
+    background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.15));
+    box-shadow: 0 2px 3px 0 rgba(0, 0, 0, 0.5);
+    font: 700 12px "Helvetica Neue", Helvetica, Arial, sans-serif;
+
+    pointer-events: auto;
+
+    top: 38px;
+    right: -45px;
+
+    transform: rotate(45deg);
+  }
+
+  .github-fork-ribbon a[href],
+  .github-fork-ribbon a[href]:hover {
+    color: #fff;
+    background-color: transparent;
+    text-decoration: none;
+    text-shadow: 0 -1px rgba(0, 0, 0, 0.5);
+    text-align: center;
+
+    width: 190px;
+    line-height: 18px;
+
+    display: inline-block;
+    padding: 2px 0;
+
+    border: 1.5px dotted #fff;
+    border-color: rgba(255, 255, 255, 0.6);
+  }
+
+  .github-fork-ribbon-wrapper {
+    display: block;
+    width: 130px;
+    height: 130px;
+    position: absolute;
+    overflow: hidden;
+    top: 0; right: 0;
+    z-index: 2;
+    pointer-events: none;
+  }
+}
+@media screen and (min-width: 1000px) {
+  .github-fork-ribbon-wrapper {
+    position: fixed;
+  }
+  /*]]>*/</style>
+  <meta name="viewport" content="initial-scale=1.0">
+
+
+  <link href="#rfc.toc" rel="Contents">
+<link href="#rfc.section.1" rel="Chapter" title="1 Introduction">
+<link href="#rfc.section.2" rel="Chapter" title="2 Using GREASE in HTTP/2">
+<link href="#rfc.section.2.1" rel="Chapter" title="2.1 GREASE for Frame Types">
+<link href="#rfc.section.2.2" rel="Chapter" title="2.2 GREASE for SETTINGS">
+<link href="#rfc.section.3" rel="Chapter" title="3 Security Considerations">
+<link href="#rfc.section.4" rel="Chapter" title="4 IANA Considerations">
+<link href="#rfc.section.4.1" rel="Chapter" title="4.1 Frame Types">
+<link href="#rfc.section.4.2" rel="Chapter" title="4.2 Settings">
+<link href="#rfc.references" rel="Chapter" title="5 References">
+<link href="#rfc.references.1" rel="Chapter" title="5.1 Normative References">
+<link href="#rfc.references.2" rel="Chapter" title="5.2 Informative References">
+<link href="#rfc.appendix.A" rel="Chapter" title="A Acknowledgements">
+<link href="#rfc.authors" rel="Chapter">
+
+
+  <meta name="generator" content="xml2rfc version 2.10.3 - https://tools.ietf.org/tools/xml2rfc" />
+  <link rel="schema.dct" href="http://purl.org/dc/terms/" />
+
+  <meta name="dct.creator" content="Bishop, M." />
+  <meta name="dct.identifier" content="urn:ietf:id:draft-bishop-httpbis-grease-latest" />
+  <meta name="dct.issued" scheme="ISO8601" content="2018-05" />
+  <meta name="dct.abstract" content="Reserves several values in the HTTP/2 registries to exercise the requirement that clients and servers ignore unknown values." />
+  <meta name="description" content="Reserves several values in the HTTP/2 registries to exercise the requirement that clients and servers ignore unknown values." />
+
+</head>
+
+<body>
+
+  <table class="header">
+    <tbody>
+    
+    	<tr>
+<td class="left">HTTPbis</td>
+<td class="right">M. Bishop</td>
+</tr>
+<tr>
+<td class="left">Internet-Draft</td>
+<td class="right">Akamai</td>
+</tr>
+<tr>
+<td class="left">Intended status: Standards Track</td>
+<td class="right">October 5, 2018</td>
+</tr>
+<tr>
+<td class="left">Expires: April 8, 2019</td>
+<td class="right"></td>
+</tr>
+
+    	
+    </tbody>
+  </table>
+
+  <p class="title">GREASE for HTTP/2<br />
+  <span class="filename">draft-bishop-httpbis-grease-latest</span></p>
+  
+  <h1 id="rfc.abstract"><a href="#rfc.abstract">Abstract</a></h1>
+<p>Reserves several values in the HTTP/2 registries to exercise the requirement that clients and servers ignore unknown values.</p>
+<h1 id="rfc.status"><a href="#rfc.status">Status of This Memo</a></h1>
+<p>This Internet-Draft is submitted in full conformance with the provisions of BCP 78 and BCP 79.</p>
+<p>Internet-Drafts are working documents of the Internet Engineering Task Force (IETF).  Note that other groups may also distribute working documents as Internet-Drafts.  The list of current Internet-Drafts is at https://datatracker.ietf.org/drafts/current/.</p>
+<p>Internet-Drafts are draft documents valid for a maximum of six months and may be updated, replaced, or obsoleted by other documents at any time.  It is inappropriate to use Internet-Drafts as reference material or to cite them other than as "work in progress."</p>
+<p>This Internet-Draft will expire on April 8, 2019.</p>
+<h1 id="rfc.copyrightnotice"><a href="#rfc.copyrightnotice">Copyright Notice</a></h1>
+<p>Copyright (c) 2018 IETF Trust and the persons identified as the document authors.  All rights reserved.</p>
+<p>This document is subject to BCP 78 and the IETF Trust's Legal Provisions Relating to IETF Documents (https://trustee.ietf.org/license-info) in effect on the date of publication of this document.  Please review these documents carefully, as they describe your rights and restrictions with respect to this document.  Code Components extracted from this document must include Simplified BSD License text as described in Section 4.e of the Trust Legal Provisions and are provided without warranty as described in the Simplified BSD License.</p>
+
+  
+  <hr class="noprint" />
+  <h1 class="np" id="rfc.toc"><a href="#rfc.toc">Table of Contents</a></h1>
+  <ul class="toc">
+
+  	<li>1.   <a href="#rfc.section.1">Introduction</a>
+</li>
+<li>2.   <a href="#rfc.section.2">Using GREASE in HTTP/2</a>
+</li>
+<ul><li>2.1.   <a href="#rfc.section.2.1">GREASE for Frame Types</a>
+</li>
+<li>2.2.   <a href="#rfc.section.2.2">GREASE for SETTINGS</a>
+</li>
+</ul><li>3.   <a href="#rfc.section.3">Security Considerations</a>
+</li>
+<li>4.   <a href="#rfc.section.4">IANA Considerations</a>
+</li>
+<ul><li>4.1.   <a href="#rfc.section.4.1">Frame Types</a>
+</li>
+<li>4.2.   <a href="#rfc.section.4.2">Settings</a>
+</li>
+</ul><li>5.   <a href="#rfc.references">References</a>
+</li>
+<ul><li>5.1.   <a href="#rfc.references.1">Normative References</a>
+</li>
+<li>5.2.   <a href="#rfc.references.2">Informative References</a>
+</li>
+</ul><li>Appendix A.   <a href="#rfc.appendix.A">Acknowledgements</a>
+</li>
+<li><a href="#rfc.authors">Author's Address</a>
+</li>
+
+
+  </ul>
+
+  <h1 id="rfc.section.1">
+<a href="#rfc.section.1">1.</a> <a href="#problems" id="problems">Introduction</a>
+</h1>
+<p><a href="#UseIt" class="xref">[UseIt]</a> observes that extension and negotiation mechanisms which aren&#8217;t exercised regularly can be found not to work when they are later employed by an extension to the protocol.  <a href="#GREASE" class="xref">[GREASE]</a> is one mitigation which originated in TLS, registering multiple values in various TLS registries which can be sent prospectively by clients.</p>
+<p id="rfc.section.1.p.2">The common requirement of the different spaces described by these documents is the requirement that recipients ignore unrecognized values.  By reserving a scattered set of codepoints to have no defined meaning, clients and servers can inject values from these ranges into connections on a regular basis and exercise this requirement.</p>
+<p id="rfc.section.1.p.3">HTTP/2 <a href="#HTTP2" class="xref">[HTTP2]</a> frame types and settings employ a similar mechanism of ignoring unknown values. This makes HTTP/2 a good candidate to employ grease on connections. The need for such a technique was demonstrated recently by an HTTP/2 implementation which closed the connection upon receipt of an unknown setting.</p>
+<h1 id="rfc.section.2">
+<a href="#rfc.section.2">2.</a> <a href="#using-grease-in-http2" id="using-grease-in-http2">Using GREASE in HTTP/2</a>
+</h1>
+<h1 id="rfc.section.2.1">
+<a href="#rfc.section.2.1">2.1.</a> <a href="#grease-for-frame-types" id="grease-for-frame-types">GREASE for Frame Types</a>
+</h1>
+<p id="rfc.section.2.1.p.1">Frame types of the format <samp>0xb + (0x1f * N)</samp> are reserved for use as grease.  These frames have no semantic meaning, and SHOULD be send instead of using padding on DATA or HEADERS frames where possible.  They MAY also be sent on connections where there is no application data currently being transferred.  Endpoints MUST NOT consider these frames to have any meaning upon receipt.</p>
+<p id="rfc.section.2.1.p.2">The flags, the payload, and the length of the frames SHOULD be selected randomly, subject to implementation-defined limits on the length.</p>
+<h1 id="rfc.section.2.2">
+<a href="#rfc.section.2.2">2.2.</a> <a href="#grease-for-settings" id="grease-for-settings">GREASE for SETTINGS</a>
+</h1>
+<p id="rfc.section.2.2.p.1">Settings identifiers of the format <samp>0x?a?a</samp> are reserved for use as grease.  Such settings have no defined meaning.  Endpoints SHOULD include at least one such setting in their initial SETTINGS frame, and MAY send new SETTINGS frames during the connection containing additional grease values.  Endpoints MUST NOT consider such settings to have any meaning upon receipt.</p>
+<p id="rfc.section.2.2.p.2">Because the setting has no defined meaning, the value of the setting SHOULD be selected randomly.</p>
+<h1 id="rfc.section.3">
+<a href="#rfc.section.3">3.</a> <a href="#security" id="security">Security Considerations</a>
+</h1>
+<p id="rfc.section.3.p.1">The ability to design, implement, and deploy new protocol mechanisms can be critical to security.</p>
+<h1 id="rfc.section.4">
+<a href="#rfc.section.4">4.</a> <a href="#iana" id="iana">IANA Considerations</a>
+</h1>
+<h1 id="rfc.section.4.1">
+<a href="#rfc.section.4.1">4.1.</a> <a href="#frame-types" id="frame-types">Frame Types</a>
+</h1>
+<p id="rfc.section.4.1.p.1">This document registers a range of entries in the &#8220;HTTP/2 Frame Type&#8221; registry defined in <a href="#HTTP2" class="xref">[HTTP2]</a>.  For each code of the format <samp>0xb + (0x1f * N)</samp> for values of N in the range (0..7) (that is, <samp>0xb</samp>, <samp>0x2a</samp>, etc., through <samp>0xe4</samp>), the following values should be registered:</p>
+<p></p>
+
+<dl>
+<dt>Frame Type:</dt>
+<dd style="margin-left: 8">Reserved - GREASE</dd>
+<dt>Specification:</dt>
+<dd style="margin-left: 8">This document</dd>
+</dl>
+<h1 id="rfc.section.4.2">
+<a href="#rfc.section.4.2">4.2.</a> <a href="#settings" id="settings">Settings</a>
+</h1>
+<p id="rfc.section.4.2.p.1">This document registers a range of entries in the &#8220;HTTP/2 Settings&#8221; registry defined in <a href="#HTTP2" class="xref">[HTTP2]</a>.  For each code of the format <samp>0x?a?a</samp> where each <samp>?</samp> is any octet (that is, <samp>0x0a0a</samp>, <samp>0x0a1a</samp>, etc. through <samp>0xfafa</samp>), the following values should be registered:</p>
+<p></p>
+
+<dl>
+<dt>Name:</dt>
+<dd style="margin-left: 8">Reserved - GREASE</dd>
+<dt>Initial Value:</dt>
+<dd style="margin-left: 8">(undefined)</dd>
+<dt>Specification:</dt>
+<dd style="margin-left: 8">This document</dd>
+</dl>
+<h1 id="rfc.references">
+<a href="#rfc.references">5.</a> References</h1>
+<h1 id="rfc.references.1">
+<a href="#rfc.references.1">5.1.</a> Normative References</h1>
+<table><tbody><tr>
+<td class="reference"><b id="HTTP2">[HTTP2]</b></td>
+<td class="top">
+<a>Belshe, M.</a>, <a>Peon, R.</a> and <a>M. Thomson</a>, "<a href="https://tools.ietf.org/html/rfc7540">Hypertext Transfer Protocol Version 2 (HTTP/2)</a>", RFC 7540, DOI 10.17487/RFC7540, May 2015.</td>
+</tr></tbody></table>
+<h1 id="rfc.references.2">
+<a href="#rfc.references.2">5.2.</a> Informative References</h1>
+<table><tbody>
+<tr>
+<td class="reference"><b id="GREASE">[GREASE]</b></td>
+<td class="top">
+<a>Benjamin, D.</a>, "<a href="https://tools.ietf.org/html/draft-ietf-tls-grease-01">Applying GREASE to TLS Extensibility</a>", Internet-Draft draft-ietf-tls-grease-01, June 2018.</td>
+</tr>
+<tr>
+<td class="reference"><b id="UseIt">[UseIt]</b></td>
+<td class="top">
+<a>Thomson, M.</a>, "<a href="https://tools.ietf.org/html/draft-thomson-use-it-or-lose-it-02">Long-term Viability of Protocol Extension Mechanisms</a>", Internet-Draft draft-thomson-use-it-or-lose-it-02, June 2018.</td>
+</tr>
+</tbody></table>
+<h1 id="rfc.appendix.A">
+<a href="#rfc.appendix.A">Appendix A.</a> <a href="#acknowledgements" id="acknowledgements">Acknowledgements</a>
+</h1>
+<p id="rfc.section.A.p.1">This draft arose from a discussion in the QUIC WG with Lucas Pardue, Ryan Hamilton, and Martin Thomson.</p>
+<h1 id="rfc.authors"><a href="#rfc.authors">Author's Address</a></h1>
+<div class="avoidbreak">
+  <address class="vcard">
+	<span class="vcardline">
+	  <span class="fn">Mike Bishop</span> 
+	  <span class="n hidden">
+		<span class="family-name">Bishop</span>
+	  </span>
+	</span>
+	<span class="org vcardline">Akamai</span>
+	<span class="adr">
+	  
+	  <span class="vcardline">
+		<span class="locality"></span> 
+		<span class="region"></span>
+		<span class="code"></span>
+	  </span>
+	  <span class="country-name vcardline"></span>
+	</span>
+	<span class="vcardline">EMail: <a href="mailto:mbishop@evequefou.be">mbishop@evequefou.be</a></span>
+
+  </address>
+</div>
+
+</body>
+</html>
