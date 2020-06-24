@@ -177,10 +177,10 @@ Internet-Draft              GREASE for HTTP/2                  June 2020
 
 5.2.  Informative References
 
-   [GREASE]   Benjamin, D., "Applying GREASE to TLS Extensibility", Work
-              in Progress, Internet-Draft, draft-ietf-tls-grease-04, 22
-              August 2019, <http://www.ietf.org/internet-drafts/draft-
-              ietf-tls-grease-04.txt>.
+   [GREASE]   Benjamin, D., "Applying Generate Random Extensions And
+              Sustain Extensibility (GREASE) to TLS Extensibility",
+              RFC 8701, DOI 10.17487/RFC8701, January 2020,
+              <https://www.rfc-editor.org/info/rfc8701>.
 
    [UseIt]    Thomson, M., "Long-term Viability of Protocol Extension
               Mechanisms", Work in Progress, Internet-Draft, draft-
