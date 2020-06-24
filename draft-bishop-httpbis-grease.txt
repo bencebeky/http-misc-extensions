@@ -4,8 +4,8 @@
 
 HTTPbis                                                        M. Bishop
 Internet-Draft                                                    Akamai
-Intended status: Standards Track                         October 5, 2018
-Expires: April 8, 2019
+Intended status: Standards Track                            24 June 2020
+Expires: 26 December 2020
 
 
                            GREASE for HTTP/2
@@ -31,31 +31,31 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on April 8, 2019.
+   This Internet-Draft will expire on 26 December 2020.
 
 Copyright Notice
 
-   Copyright (c) 2018 IETF Trust and the persons identified as the
+   Copyright (c) 2020 IETF Trust and the persons identified as the
    document authors.  All rights reserved.
 
    This document is subject to BCP 78 and the IETF Trust's Legal
-   Provisions Relating to IETF Documents
-   (https://trustee.ietf.org/license-info) in effect on the date of
-   publication of this document.  Please review these documents
-   carefully, as they describe your rights and restrictions with respect
-   to this document.  Code Components extracted from this document must
-   include Simplified BSD License text as described in Section 4.e of
-   the Trust Legal Provisions and are provided without warranty as
-   described in the Simplified BSD License.
+   Provisions Relating to IETF Documents (https://trustee.ietf.org/
+   license-info) in effect on the date of publication of this document.
+   Please review these documents carefully, as they describe your rights
+   and restrictions with respect to this document.  Code Components
+   extracted from this document must include Simplified BSD License text
+   as described in Section 4.e of the Trust Legal Provisions and are
+   provided without warranty as described in the Simplified BSD License.
 
 
 
 
 
 
-Bishop                    Expires April 8, 2019                 [Page 1]
+
+Bishop                  Expires 26 December 2020                [Page 1]
 
-Internet-Draft              GREASE for HTTP/2               October 2018
+Internet-Draft              GREASE for HTTP/2                  June 2020
 
 
 Table of Contents
@@ -109,14 +109,20 @@ Table of Contents
 
 
 
-Bishop                    Expires April 8, 2019                 [Page 2]
+Bishop                  Expires 26 December 2020                [Page 2]
 
-Internet-Draft              GREASE for HTTP/2               October 2018
+Internet-Draft              GREASE for HTTP/2                  June 2020
 
 
    The flags, the payload, and the length of the frames SHOULD be
    selected randomly, subject to implementation-defined limits on the
    length.
+
+   [HTTP2] is ambiguous about whether unknown frame types are permitted
+   on streams in the "idle", "reserved", "closed", or "half-closed
+   (local)" states.  As a result, some implementations could
+   legitimately consider this to be an error.  Therefore, these frames
+   SHOULD NOT be sent on streams in those states.
 
 2.2.  GREASE for SETTINGS
 
@@ -156,19 +162,19 @@ Internet-Draft              GREASE for HTTP/2               October 2018
    where each "?" is any octet (that is, "0x0a0a", "0x0a1a", etc.
    through "0xfafa"), the following values should be registered:
 
+
+
+
+Bishop                  Expires 26 December 2020                [Page 3]
+
+Internet-Draft              GREASE for HTTP/2                  June 2020
+
+
    Name:  Reserved - GREASE
 
    Initial Value:  (undefined)
 
    Specification:  This document
-
-
-
-
-Bishop                    Expires April 8, 2019                 [Page 3]
-
-Internet-Draft              GREASE for HTTP/2               October 2018
-
 
 5.  References
 
@@ -181,12 +187,16 @@ Internet-Draft              GREASE for HTTP/2               October 2018
 
 5.2.  Informative References
 
-   [GREASE]   Benjamin, D., "Applying GREASE to TLS Extensibility",
-              draft-ietf-tls-grease-01 (work in progress), June 2018.
+   [GREASE]   Benjamin, D., "Applying GREASE to TLS Extensibility", Work
+              in Progress, Internet-Draft, draft-ietf-tls-grease-04, 22
+              August 2019, <http://www.ietf.org/internet-drafts/draft-
+              ietf-tls-grease-04.txt>.
 
    [UseIt]    Thomson, M., "Long-term Viability of Protocol Extension
-              Mechanisms", draft-thomson-use-it-or-lose-it-02 (work in
-              progress), June 2018.
+              Mechanisms", Work in Progress, Internet-Draft, draft-
+              thomson-use-it-or-lose-it-04, 7 July 2019,
+              <http://www.ietf.org/internet-drafts/draft-thomson-use-it-
+              or-lose-it-04.txt>.
 
 Appendix A.  Acknowledgements
 
@@ -211,14 +221,4 @@ Author's Address
 
 
 
-
-
-
-
-
-
-
-
-
-
-Bishop                    Expires April 8, 2019                 [Page 4]
+Bishop                  Expires 26 December 2020                [Page 4]
