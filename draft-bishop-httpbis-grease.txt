@@ -68,8 +68,8 @@ Table of Contents
    4.  IANA Considerations . . . . . . . . . . . . . . . . . . . . .   3
      4.1.  Frame Types . . . . . . . . . . . . . . . . . . . . . . .   3
      4.2.  Settings  . . . . . . . . . . . . . . . . . . . . . . . .   3
-   5.  References  . . . . . . . . . . . . . . . . . . . . . . . . .   4
-     5.1.  Normative References  . . . . . . . . . . . . . . . . . .   4
+   5.  References  . . . . . . . . . . . . . . . . . . . . . . . . .   3
+     5.1.  Normative References  . . . . . . . . . . . . . . . . . .   3
      5.2.  Informative References  . . . . . . . . . . . . . . . . .   4
    Appendix A.  Acknowledgements . . . . . . . . . . . . . . . . . .   4
    Author's Address  . . . . . . . . . . . . . . . . . . . . . . . .   4
@@ -145,22 +145,22 @@ Internet-Draft              GREASE for HTTP/2                  June 2020
 
 4.1.  Frame Types
 
-   This document registers a range of entries in the "HTTP/2 Frame Type"
-   registry defined in [HTTP2].  For each code of the format "0xb +
-   (0x1f * N)" for values of N in the range (0..7) (that is, "0xb",
-   "0x2a", etc., through "0xe4"), the following values should be
-   registered:
-
-   Frame Type:  Reserved - GREASE
-
-   Specification:  This document
+   This document reserves a range of entries in the "HTTP/2 Frame Type"
+   registry defined in [HTTP2].  Each code of the format "0xb + (0x1f *
+   N)" for values of N in the range (0..7) (that is, "0xb", "0x2a",
+   etc., through "0xe4") MUST NOT be assigned by IANA for any purpose.
 
 4.2.  Settings
 
-   This document registers a range of entries in the "HTTP/2 Settings"
-   registry defined in [HTTP2].  For each code of the format "0x?a?a"
-   where each "?" is any octet (that is, "0x0a0a", "0x0a1a", etc.
-   through "0xfafa"), the following values should be registered:
+   This document reserves a range of entries in the "HTTP/2 Settings"
+   registry defined in [HTTP2].  Each code of the format "0x?a?a" where
+   each "?" is any octet (that is, "0x0a0a", "0x0a1a", etc. through
+   "0xfafa") MUST NOT be assigned by IANA for any purpose.
+
+5.  References
+
+5.1.  Normative References
+
 
 
 
@@ -169,16 +169,6 @@ Bishop                  Expires 26 December 2020                [Page 3]
 
 Internet-Draft              GREASE for HTTP/2                  June 2020
 
-
-   Name:  Reserved - GREASE
-
-   Initial Value:  (undefined)
-
-   Specification:  This document
-
-5.  References
-
-5.1.  Normative References
 
    [HTTP2]    Belshe, M., Peon, R., and M. Thomson, Ed., "Hypertext
               Transfer Protocol Version 2 (HTTP/2)", RFC 7540,
@@ -209,6 +199,16 @@ Author's Address
    Akamai
 
    Email: mbishop@evequefou.be
+
+
+
+
+
+
+
+
+
+
 
 
 
